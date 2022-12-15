@@ -4,7 +4,7 @@ session_start();
 $username = $_POST["username"];
 $password = $_POST["password"];
 $query = $mysqli->prepare("SELECT * FROM users WHERE username=? AND password=?");
-$query->bind_params("ss",$username,$password);
+$query->bind_param("ss",$username,$password);
 $query->execute();
 $result = $query->get_results();
 $response=[];

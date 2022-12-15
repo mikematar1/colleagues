@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>feed</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="disp-container">
+    <div class="list" *ngFor="let item of array">
+      <p id="place_type" class="type-item">{{type[i]}}</p>
+      <h1 id="name" class="location-and-name">
+        {{item.name}}
+        <ion-icon name="location-outline" style="margin-left: 10px"></ion-icon
+        >{{item.location}}
+      </h1>
+      <a class="details">Like Button</a>
+      <button (click)="submitlike(item.id)" >like</button>
+    </div>
+  </div>
+  
+</ion-content>

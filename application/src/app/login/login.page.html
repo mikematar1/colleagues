@@ -1,19 +1,41 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-list>
-    <ion-item>
-      <ion-label>Email</ion-label>
-      <ion-input type="email" placeholder="Enter your email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Password</ion-label>
-      <ion-input type="password" placeholder="Enter your password"></ion-input>
-    </ion-item>
-  </ion-list>
-  <ion-button expand="block" color="primary">LOGIN</ion-button>
+<ion-content class="background">
+  <div class="toolbar">
+    <h1 class="leb-guide">Colleagues</h1>
+  </div>
+  <div class="login-container">
+    <h1 class="login">Log In</h1>
+    <div class="email-info">
+      <ion-label position="floating">Email</ion-label>
+      <div class="box">
+        <ion-input
+          type="email"
+          required
+          [(ngModel)]="email"
+          placeholder="name@example.com"
+        ></ion-input>
+      </div>
+    </div>
+    <div class="pass-info">
+      <ion-label position="floating">Password</ion-label>
+      <div class="box">
+        <ion-input
+          type="password"
+          [(ngModel)]="password"
+          required
+          placeholder="Password"
+        ></ion-input>
+      </div>
+    </div>
+    <p class="no-account">Don't have an account?</p>
+    <a class="no-account-a" (click)="signupRedirect()">Sign Up</a>
+    <p id="loginMessage" class="not-found"></p>
+    <ion-button
+      type="submit"
+      class="login-button"
+      color="none"
+      style="padding: 0px"
+      (click)="checkUser()"
+      >Login</ion-button
+    >
+  </div>
 </ion-content>

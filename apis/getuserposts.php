@@ -3,7 +3,7 @@ include("connection.php");
 session_start();
 $userid=$_SESSION["userid"];
 $query = $mysqli->prepare("SELECT * FROM posts WHERE userid=?");
-$query->bind_params($userid);
+$query->bind_param($userid);
 $query->execute();
 $results=$query->get_results();
 $response=[];
