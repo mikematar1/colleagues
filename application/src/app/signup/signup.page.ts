@@ -9,57 +9,51 @@ import { Router } from '@angular/router';
 })
 export class SignupPage implements OnInit {
 
-  first_name: string = '';
-  last_name: string = '';
-  phone_number: any = '';
+  username: string = '';
   email: string = '';
-  password: string = '';
+  password: any = '';
+  universityid: any= '';
+  universities: any = [];
   constructor(private router: Router, private http: HttpClient) {}
   
   ionViewWillEnter() {
-    let message = document.getElementById('signupMessage') as HTMLInputElement;
-    message.className = 'exist';
-    message.innerHTML = '';
+    this.http
+    .get(
+      'http://127.0.0.1:8000/api/getuniversities.php'
+    )
+    .subscribe((data) => {
+      let info = JSON.stringify(data);
+      this.universities = JSON.parse(info);
+      
+    });
+
   }
-  goToHome() {
+  signup() {
     if (
       this.email == '' ||
       this.password == '' ||
-      this.first_name == '' ||
-      this.last_name == '' ||
-      this.phone_number == ''
+      this.username == '' ||
+      this.universityid == ''
     ) {
-      let message = document.getElementById(
-        'signupMessage'
-      ) as HTMLInputElement;
-      message.className = 'empty';
+      let message = document.getElementById('emptyfieldsmessage') as HTMLInputElement;
       message.innerHTML = 'Please Fill All Fields';
     } else {
       let postData = new FormData();
-      postData.append('first_name', this.first_name);
-      postData.append('last_name', this.last_name);
-      postData.append('phone_number', this.phone_number);
       postData.append('email', this.email);
       postData.append('password', this.password);
+      postData.append('username', this.username);
+      postData.append('universityid', this.universityid);
+      
       this.http
-        .post('http://127.0.0.1:8000/api/v0.1/users/signup', postData)
+        .post('http://127.0.0.1:8000/api/adduser.php', postData)
         .subscribe((data) => {
-          let tmp = JSON.stringify(data);
-          if (JSON.parse(tmp)['User'] == 'User Exist') {
-            let message = document.getElementById(
-              'signupMessage'
-            ) as HTMLInputElement;
-            message.className = 'exist';
-            message.innerHTML = 'User Already Exist';
-          } else {
-            this.router.navigate(['/tabs'], {
-              state: { user: JSON.parse(tmp)['User'] },
-            });
-          }
-        });
+            this.router.navigate(['/login'])
+             });
     }
   }
-
+  handleChange(e: { detail: { value: any; }; }) {
+    this.universityid = e.detail.value;
+  }
   ngOnInit() {
   }
 

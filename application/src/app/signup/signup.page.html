@@ -1,9 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>signup</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="background">
+  <div class="toolbar">
+    <h1 class="leb-guide">Colleagues</h1>
+  </div>
+  <div class="login-container">
+    <h1 class="login">Sign Up</h1>
+    
+    <div class="fname-info">
+      <ion-label position="floating">username</ion-label>
+      <div class="box">
+        <ion-input type="text" required [(ngModel)]="username"></ion-input>
+      </div>
+    </div>
+    <div class="lname-info">
+      <ion-label position="floating">email</ion-label>
+      <div class="box">
+        <ion-input type="text" [(ngModel)]="email" required></ion-input>
+      </div>
+    </div>
+    <div class="phone-info">
+      <ion-label position="floating" required>password</ion-label>
+      <div class="box">
+        <ion-input type="number" [(ngModel)]="password"></ion-input>
+      </div>
+    </div>
+    <div class="email-info">
+      <ion-list>
+        <ion-item>
+          <ion-select
+            placeholder="Select fruit"
+            (ionChange)="handleChange($event)">
+            <ion-select-option value="{{university.id}}" *ngFor="let university of universities">{{university.name}}</ion-select-option>
+            
+          </ion-select>
+        </ion-item>
+      </ion-list>
+      
+    </div>
 
-<ion-content>
-
+    <span id="emptyfieldsmessage"></span>
+    <ion-button type="submit" class="signup-button" color="none" style="padding: 0px" (click)="signup()">Sign Up</ion-button>
+  </div>
 </ion-content>

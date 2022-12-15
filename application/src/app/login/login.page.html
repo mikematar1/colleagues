@@ -18,24 +18,12 @@
     <div class="pass-info">
       <ion-label position="floating">Password</ion-label>
       <div class="box">
-        <ion-input
-          type="password"
-          [(ngModel)]="password"
-          required
-          placeholder="Password"
-        ></ion-input>
+        <ion-input type="password" [(ngModel)]="password" placeholder="Password"></ion-input>
       </div>
     </div>
     <p class="no-account">Don't have an account?</p>
     <a class="no-account-a" (click)="signupRedirect()">Sign Up</a>
-    <p id="loginMessage" class="not-found"></p>
-    <ion-button
-      type="submit"
-      class="login-button"
-      color="none"
-      style="padding: 0px"
-      (click)="checkUser()"
-      >Login</ion-button
-    >
+    <span id="notfoundmessage" class="not-found"></span>
+    <ion-button type="submit" class="login-button" color="none" style="padding: 0px" (click)="authenticate()">Login</ion-button>
   </div>
 </ion-content>

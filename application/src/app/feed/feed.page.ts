@@ -13,16 +13,20 @@ export class FeedPage implements OnInit {
 
   ngOnInit() {
   }
-  listposts(){
+  ionViewWillEnter(){
     this.http
           .get(
             'http://127.0.0.1:8000/api/getuniposts.php'
           )
           .subscribe((data) => {
-            let tmp = JSON.stringify(data);
-            let temp = JSON.parse(tmp)['Restaurants'];
-            this.array = temp;
-            
+            let info = JSON.stringify(data);
+            this.array = JSON.parse(info);
           });
+  }
+  submitlike(id: any){
+    let data = new FormData();
+      data.append("postid", id);
+      this.http
+        .post('http://127.0.0.1:8000/api/likepost.php', data);
   }
 }

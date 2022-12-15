@@ -10,7 +10,7 @@ $result = $query->get_results();
 $response=[];
 if(mysqli_num_rows($result)>0){
     $user = $result->fetch_assoc();
-    $response["found"] = user;
+    $response["found"] = $user;
     $_SESSION["userid"] = $user["id"];
 }else{
     $response["found"]=false;
