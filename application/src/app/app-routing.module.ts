@@ -32,18 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'feed',
-    loadChildren: () => import('./feed/feed.module').then( m => m.FeedPageModule)
-  },
-  {
-    path: 'search',
-    loadChildren: () => import('./search/search.module').then( m => m.SearchPageModule)
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  {
     path: 'message',
     loadChildren: () => import('./message/message.module').then( m => m.MessagePageModule)
   },

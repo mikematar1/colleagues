@@ -1,9 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>search</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
+  <div class="disp-container">
+    <div class="list" *ngFor="let item of array">
+      <p>{{username}}    {{date}}</p>
+      <image src="{{item.image}}"></image>
+      <p>{{item.description}}</p>
+      <button (click)="submitlike(item.id)" >like</button>
+    </div>
+  </div>
+  
 </ion-content>
